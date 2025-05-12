@@ -15,12 +15,17 @@ class ProdutosPage {
         .click()
     }
 
-    visitarProduto() {
-
+    visitarProduto(nomeProduto) {
+        //cy.visit(`produtos/${nomeProduto}`)
+        const urlFormatada = nomeProduto.replace(/ /g, '-')
+        cy.visit(`produtos/${urlFormatada}`)
     }
 
-    addProdutoCarrinho(){
-
+    addProdutoCarrinho() {
+        cy.get('.button-variable-item-M').click()
+        cy.get('.button-variable-item-Brown').click()
+        cy.get('.input-text').clear().type(2)
+        cy.get('.single_add_to_cart_button').click()
     }
 }
  
